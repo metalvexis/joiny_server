@@ -1,0 +1,72 @@
+{
+  "name": "catalyst_app",
+  "version": "1.0.0",
+  "description": "A Travel and Tours Hub",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rm -rf ./dist/ && babel --cwd ./src/ ./src/server -d .dist/server && cp -a ./src/client/build/* ./.dist/client",
+    "start": "node ./.dist/server/",
+    "prod": "babel --cwd ./src/ ./src/server -d .dist/server && node ./.dist/server/",
+    "dev": "nodemon --delay 2 --watch ./src --exec \"npm run build && npm start\" ",
+    "generate-dummies": "node ./.dist/server/scripts/generateDummies.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/metalvexis/catalyst_app.git"
+  },
+  "author": "metalvexis",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/metalvexis/catalyst_app/issues"
+  },
+  "homepage": "https://github.com/metalvexis/catalyst_app#readme",
+  "dependencies": {
+    "@babel/polyfill": "^7.2.5",
+    "bcrypt": "^3.0.3",
+    "body-parser": "^1.18.3",
+    "date-fns": "^1.30.1",
+    "dotenv": "^6.2.0",
+    "express": "^4.16.4",
+    "faker": "^4.1.0",
+    "jsonwebtoken": "^8.4.0",
+    "lodash": "^4.17.11",
+    "method-override": "^3.0.0",
+    "mongoose": "^5.4.6",
+    "morgan": "^1.9.1",
+    "nodemailer": "^5.1.1",
+    "paymaya-node-sdk": "^0.1.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "7.2.3",
+    "@babel/core": "7.2.2",
+    "@babel/preset-env": "7.3.1",
+    "@babel/preset-react": "7.0.0",
+    "babel-plugin-module-resolver": "3.1.3"
+  },
+  "babel": {
+    "presets": [
+      [
+        "@babel/preset-env",
+        {
+          "targets": {
+            "node": "current"
+          }
+        }
+      ]
+    ],
+    "plugins": [
+      [
+        "module-resolver",
+        {
+          "root": [
+            "./src"
+          ],
+          "alias": {}
+        }
+      ]
+    ],
+    "sourceMaps": true,
+    "retainLines": true
+  }
+}
