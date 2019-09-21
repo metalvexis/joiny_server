@@ -20,7 +20,7 @@ let jsonParser = bodyParser.json();
 let urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 const app = express();
-const serverPort = 3000;
+const serverPort = process.env.PORT || 3000;
 
 connectToDb()
   .then(()=>{
