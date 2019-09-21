@@ -1,8 +1,5 @@
 import pmSDK from 'paymaya-node-sdk';
 
-const PAYMAYA_SEC_KEY = 'sk-VGDKY3P90NYZZ0kSWqBFaD1NTIXQCxtdS7SbQXvcA4g';
-const PAYMAYA_PUB_KEY = 'pk-yaj6GVzYkce52R193RIWpuRR5tTZKqzBWsUeCkP9EAf';
-
 const rootUrl = 'http://localhost:3000';
 const redirectCheckoutSuccess = rootUrl + '/api/checkout/success';
 const redirectCheckoutFailure = rootUrl +  '/api/checkout/failure';
@@ -16,16 +13,25 @@ export const pmAddress = pmSDK.Address;
 export const pmItemAmountDetails = pmSDK.ItemAmountDetails;
 export const pmItemAmount = pmSDK.ItemAmount;
 export const pmItem = pmSDK.Item;
-
-paymayaSDK.initCheckout(
-  PAYMAYA_PUB_KEY, // <CHECKOUT_PUBLIC_FACING_API_KEY>
-  PAYMAYA_SEC_KEY, // <CHECKOUT_SECRET_API_KEY>
-  paymayaSDK.ENVIRONMENT.SANDBOX
-);
-
-console.log({initPaymaya: { PAYMAYA_PUB_KEY, PAYMAYA_SEC_KEY, paymayaSDK } });
-
 export const paymaya = pmSDK;
+
+export function initPaymaya(){
+  try{
+    const PAYMAYA_SEC_KEY = process.env.PAYMAYA_SEC_KEY;
+    const PAYMAYA_PUB_KEY = process.env.PAYMAYA_PUB_KEY;
+    paymayaSDK.initCheckout(
+      PAYMAYA_PUB_KEY, // <CHECKOUT_PUBLIC_FACING_API_KEY>
+      PAYMAYA_SEC_KEY, // <CHECKOUT_SECRET_API_KEY>
+      paymayaSDK.ENVIRONMENT.SANDBOX // Use env var
+    );
+  }catch(err){
+    console.error(err);
+  }finally{
+    console.log('Paymaya Initialized');
+  }
+
+
+}
 
 export function getTransRefNum(){
   return `${Math.floor(Math.random() * 1000000000) + 1000000000}`;

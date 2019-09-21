@@ -1,5 +1,5 @@
 import faker from 'faker';
-import { dbConnection, connectToLocalDb } from '/server/db.js';
+import { dbConnection, connectToDb } from '/server/db.js';
 import { travelAgencies, guests, tourPackages, purchases } from '../schemas';
 import { accountLib } from '../lib/accountLib.js';
 import { inventoryLib } from '../lib/inventoryLib.js';
@@ -7,9 +7,9 @@ import { inventoryLib } from '../lib/inventoryLib.js';
 faker.locale = 'en';
 faker.seed(123);
 
-connectToLocalDb();
+connectToDb();
 
-dbConnection.on('open', async()=>{
+dbConnection.once('open', async()=>{
   console.log('Mongoose connection opened');
 
   let sampleSize = 10;

@@ -1,54 +1,21 @@
-import express from 'express';
-import api from '/server/api/';
 import { connectToDb } from '/server/db.js';
-import { mwErrorLogger } from '/server/middleware/mwErrorLogger.js';
-import bodyParser from 'body-parser';
-import methodOverride from 'method-override';
-import morgan from 'morgan';
+import { startApp } from '/server/app.js';
+import { initPaymaya } from '/server/lib/paymayaLib.js';
 import dotenv from 'dotenv';
 
-console.log(`Running Env: ${process.env.NODE_ENV}`)
+console.log(`Running Env: ${process.env.NODE_ENV}`);
 
 if(process.env.NODE_ENV !== 'production'){
-  dotenv.config();
+  console.log('Load local env');
+  let env = dotenv.config();
+ 
+  if(env.error){
+    console.error(env.error);
+  }
 }
 
-// const HTMLPathDir = path.join(__dirname,'..','client'); // DOES NOT SERVE CLIENT
-// const HTMLPathFile = path.join(HTMLPathDir,'index.html'); // DOES NOT SERVE CLIENT
+connectToDb();
 
-let jsonParser = bodyParser.json();
-let urlencodedParser = bodyParser.urlencoded({ extended: false });
+initPaymaya();
 
-const app = express();
-const serverPort = 3000;
-
-connectToDb()
-  .then(()=>{
-    startApp();
-  })
-  .catch(err=>{
-    throw err;
-  });
-
-function startApp(){
-  app.use( [
-    jsonParser,
-    urlencodedParser,
-    methodOverride()
-  ] );
-
-  // log format - :method :url :status :res[content-length] - :response-time ms
-  // app.use(morgan('tiny'));
-
-  app.use(morgan(':date[iso] :status :url'));
-
-  // app.use(express.static(HTMLPathDir)); // DOES NOT SERVE CLIENT
-
-  app.use('/api', api);
-
-  app.get('/_health', (req, res) => res.send('OK'));
-
-  app.use( mwErrorLogger );
-
-  app.listen(serverPort, () => console.log(`Listening on port: ${serverPort}`));
-}
+startApp();

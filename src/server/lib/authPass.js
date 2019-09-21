@@ -53,7 +53,7 @@ async function verifyGuest(_id, veriCode){
 async function verifyTravelAgency(_id, veriCode){
   let user = await travelAgencies.findOne({ _id });
 
-  return verifyUser( user, veriCode ) 
+  return verifyUser( user, veriCode ); 
 }
 
 export const authPass = {
