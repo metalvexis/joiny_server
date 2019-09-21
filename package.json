@@ -9,7 +9,8 @@
     "start": "node ./.dist/server/",
     "prod": "babel --cwd ./src/ ./src/server -d .dist/server && node ./.dist/server/",
     "dev": "nodemon --delay 2 --watch ./src --exec \"npm run build && npm start\" ",
-    "generate-dummies": "node ./.dist/server/scripts/generateDummies.js"
+    "generate-dummies": "node ./.dist/server/scripts/generateDummies.js",
+    "heroku-prebuild": "./startup.sh"
   },
   "repository": {
     "type": "git",
@@ -68,5 +69,8 @@
     ],
     "sourceMaps": true,
     "retainLines": true
+  },
+  "engines": {
+    "yarn": "1.17.3"
   }
 }

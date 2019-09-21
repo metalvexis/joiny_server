@@ -1,4 +1,3 @@
-import path from 'path';
 import express from 'express';
 import api from '/server/api/';
 import { connectToDb } from '/server/db.js';
@@ -6,17 +5,12 @@ import { mwErrorLogger } from '/server/middleware/mwErrorLogger.js';
 import bodyParser from 'body-parser';
 import methodOverride from 'method-override';
 import morgan from 'morgan';
-
 import dotenv from 'dotenv';
 
-console.log(`Running Env: ${process.env.ENV}`)
+console.log(`Running Env: ${process.env.NODE_ENV}`)
 
-if(process.env.ENV === 'production'){
+if(process.env.NODE_ENV !== 'production'){
   dotenv.config();
-}else{
-  dotenv.config({
-    path: '.env.development'
-  });
 }
 
 // const HTMLPathDir = path.join(__dirname,'..','client'); // DOES NOT SERVE CLIENT
