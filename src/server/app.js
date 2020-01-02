@@ -33,7 +33,7 @@ function startApp(){
 
   app.get('/_health', (req, res) => res.send('OK'));
 
-  app.use( mwErrorLogger );
+  app.use( mwErrorLogger ); // Errors sink
 
   app.listen(serverPort, () => console.log(`Listening on port: ${serverPort}`));
 }
