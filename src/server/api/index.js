@@ -12,7 +12,7 @@ let router = express.Router();
 
 router.get('/', (req, res) => res.send(
   'WELCOME TO CATALYST API <br><br> '+
-  'API Doc: <br><br> '+
+  'API Doc: https://github.com/metalvexis/joiny_server#api<br><br> '+
   'Programmer: James Paulo J. Saballegue<br> '+
   'Contact: jp.saballegue@gmail.com'));
 
