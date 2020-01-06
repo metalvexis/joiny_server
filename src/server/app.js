@@ -29,7 +29,7 @@ function startApp(){
   
   // app.use(express.static(HTMLPathDir)); // DOES NOT SERVE CLIENT
 
-  app.use('/api', api);
+  app.use('/', api);
 
   app.get('/_health', (req, res) => res.send('OK'));
 
