@@ -29,11 +29,17 @@ function startApp(){
   
   // app.use(express.static(HTMLPathDir)); // DOES NOT SERVE CLIENT
 
-  app.use('/api', api);
+  app.use('/v1', api);
 
   app.get('/_health', (req, res) => res.send('OK'));
 
-  app.use( mwErrorLogger );
+  app.get('/', (req, res) => res.send(
+    'WELCOME TO CATALYST API <br><br> '+
+    'API Doc: <a href="https://github.com/metalvexis/joiny_server#api">https://github.com/metalvexis/joiny_server</a><br><br> '+
+    'Programmer: James Paulo J. Saballegue<br> '+
+    'Contact: jp.saballegue@gmail.com'));
+
+  app.use( mwErrorLogger ); // Errors sink
 
   app.listen(serverPort, () => console.log(`Listening on port: ${serverPort}`));
 }

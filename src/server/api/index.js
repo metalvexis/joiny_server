@@ -10,12 +10,6 @@ import apiCheckout from '/server/api/apiCheckout.js';
 import apiEmail from '/server/api/apiEmail.js';
 let router = express.Router();
 
-router.get('/', (req, res) => res.send(
-  'WELCOME TO CATALYST API <br><br> '+
-  'API Doc: <br><br> '+
-  'Programmer: James Paulo J. Saballegue<br> '+
-  'Contact: jp.saballegue@gmail.com'));
-
 router.use('/auth', apiAuth);
 
 router.use('/tourPackages', apiTourPackages);

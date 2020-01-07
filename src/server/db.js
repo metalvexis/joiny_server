@@ -1,6 +1,4 @@
 import mongoose from 'mongoose';
-//const mongodbUri = `mongodb://${config.db.address}:${config.db.port}/${config.db.name}`
-// const mongodbUri = `mongodb://developer:developer1@ds059712.mlab.com:59712/catalyst`;
 let mongodbUri = '';
 const dbConnection = mongoose.connection;
 
@@ -17,7 +15,7 @@ function connectToDb(){
       useNewUrlParser: true
     }).catch( err=>{
       console.error(err);
-      reject(error);
+      reject(err);
     });
 
     dbConnection.once('open',()=>{
