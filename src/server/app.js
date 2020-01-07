@@ -33,7 +33,7 @@ function startApp(){
 
   app.get('/_health', (req, res) => res.send('OK'));
 
-  router.get('/', (req, res) => res.send(
+  app.get('/', (req, res) => res.send(
     'WELCOME TO CATALYST API <br><br> '+
     'API Doc: <a href="https://github.com/metalvexis/joiny_server#api">https://github.com/metalvexis/joiny_server</a><br><br> '+
     'Programmer: James Paulo J. Saballegue<br> '+
