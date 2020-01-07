@@ -33,7 +33,7 @@ Access frontend on [localhost:3000](localhost:3000)
   
   * URL:
 
-    `api/auth/guest`
+    `v1/auth/guest`
 
   * Body:
 
@@ -51,7 +51,7 @@ Access frontend on [localhost:3000](localhost:3000)
   
   * URL:
 
-    `api/auth/travelAgency`
+    `v1/auth/travelAgency`
 
   * Body:
 
@@ -74,7 +74,7 @@ Access frontend on [localhost:3000](localhost:3000)
 
   * URL: 
       
-    `api/tourPackages/allTourPackages`
+    `v1/tourPackages/allTourPackages`
 
 ### Create a Regular Tour Package
   
@@ -84,7 +84,7 @@ Access frontend on [localhost:3000](localhost:3000)
 
   * URL: 
   
-    `api/tourPackages/createRegularPackage`
+    `v1/tourPackages/createRegularPackage`
 
   * Body:
   
@@ -105,7 +105,7 @@ Access frontend on [localhost:3000](localhost:3000)
 
   * URL: 
     
-    `api/tourPackages/createJoinerPackage`
+    `v1/tourPackages/createJoinerPackage`
 
   * Body:
   
@@ -130,7 +130,7 @@ Access frontend on [localhost:3000](localhost:3000)
 
   * URL: 
       
-    `api/chat/allChat`
+    `v1/chat/allChat`
 
 ### Send a message
   
@@ -140,7 +140,7 @@ Access frontend on [localhost:3000](localhost:3000)
 
   * URL: 
     
-    `api/chat/sendMessage`
+    `v1/chat/sendMessage`
 
   * Body:
   
@@ -165,7 +165,7 @@ Access frontend on [localhost:3000](localhost:3000)
 
   * URL: 
       
-    `api/guests/allGuests`
+    `v1/guests/allGuests`
 
 ### Create an Account
 
@@ -175,7 +175,7 @@ Access frontend on [localhost:3000](localhost:3000)
 
   * URL: 
       
-    `api/guests/createAccount`
+    `v1/guests/createAccount`
   
   * Body:
 
@@ -203,7 +203,7 @@ Access frontend on [localhost:3000](localhost:3000)
 
   * URL: 
       
-    `api/travelAgencies/allTravelAgencies`
+    `v1/travelAgencies/allTravelAgencies`
 
 ### Create a Travel Agency
 
@@ -213,7 +213,7 @@ Access frontend on [localhost:3000](localhost:3000)
 
   * URL: 
       
-    `api/travelAgencies/createTravelAgency`
+    `v1/travelAgencies/createTravelAgency`
   
   * Body:
 
